@@ -26,7 +26,7 @@ Aplicação de autoclick desenvolvida em Python com interface usandio Tkinter.
 🚀 Como executar o projeto
 
 1. Clonar o repositório
-git clone https://github.com/seu-usuario/catclick.git
+git clone https://github.com/uellpng-tech/catclick.git
 
 2. Entrar na pasta
 cd catclick
