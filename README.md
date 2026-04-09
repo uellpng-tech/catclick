@@ -45,12 +45,12 @@ python main.py
 
 📁 Estrutura do projeto
 catclick/
-│
-├── main.py
-├── requirements.txt
-├── .gitignore
-├── README.md
-└── imagens/
+
+main.py
+requirements.txt
+.gitignore
+README.md
+imagens/
 
 📸 Preview
 
