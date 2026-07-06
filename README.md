@@ -21,7 +21,7 @@ Interface<br>
 
 ## Estrutura
 
-A estrutura do projeto é bem simples. O projeto conta com as imagens necessárias para o funcionamento da interface gráfica, o arquivo "main" que é o código fonte do projeto, as blibliotecas necessárias que são baixadas pelo usuário através do "requirements.txt" e o "README.md" que é a descrição e o guia do software. 
+A estrutura do projeto é bem simples. O projeto conta com as [imagens](imagens) necessárias para o funcionamento da interface gráfica, o arquivo ["main"](main.py) que é o código fonte do projeto, as blibliotecas necessárias que são baixadas pelo usuário através do ["requirements.txt"](requirements.txt) e o "README.md" que é a descrição e o guia do software. 
 
 ## Instalação
 
