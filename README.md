@@ -9,9 +9,8 @@ O Catclick é um software de autoclick. O catclick é um software para Windows d
 - Interface simples
 - Controle por teclado
 
-## Tecnologias utilizadas
+## Blibliotecas utilizadas
 
-- Python
 - Tkinter
 - PyAutoGUI
 - Keyboard
