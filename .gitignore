@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 .venv/
 .vscode
+=======
+venv/
+
+>>>>>>> origin/main
 desktop.ini
