@@ -17,7 +17,7 @@ O Catclick é um software de autoclick. O catclick é um software para Windows d
 - Pynput
 
 Interface<br>
-![Preview](imagens/Preview.png)
+![Preview](assets/Preview.png)
 
 ## Estrutura
 
