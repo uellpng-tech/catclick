@@ -1,10 +1,6 @@
-import tkinter as tk
 import time as tm
 import pyautogui as py
 import threading
-import keyboard
-from tkinter import PhotoImage, Label,ttk
-from pynput.mouse import Listener, Button
 
 rodando = False
 
@@ -35,11 +31,11 @@ def comecaclique(entradax, entraday, entradamin, entradaseg, entradamilis, click
 
         tm.sleep(tempo)
 
-def comecarautomacao(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao, rodando=False):
-    if rodando == False:
+def comecarautomacao(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao, rodandoe=False):
+    if rodandoe == False:
         return
     else:
-        threading.Thread(target=comecaclique(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao), daemon=True).start()
+        threading.Thread(target=comecaclique, args=(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao), daemon=True).start()
 
 def pararf():
     global rodando
