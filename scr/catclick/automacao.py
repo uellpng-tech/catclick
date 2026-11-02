@@ -8,23 +8,23 @@ def comecaclique(entradax, entraday, entradamin, entradaseg, entradamilis, click
     global rodando
     rodando = True
 
-    x = int(entradax.get())
-    y = int(entraday.get())
+    x = int(entradax)
+    y = int(entraday)
 
-    min = int(entradamin.get())
-    seg = int(entradaseg.get())
-    milis = int(entradamilis.get())
+    min = int(entradamin)
+    seg = int(entradaseg)
+    milis = int(entradamilis)
 
     tempo = min * 60 + seg + milis / 1000
 
     while rodando:
 
-        if clicktipo.get() == "Dois cliques":
+        if clicktipo == "Dois cliques":
             py.doubleClick(x, y)
         else:
-            if clickbotao.get() == "Direito":
+            if clickbotao == "Direito":
                 py.click(x, y, button="right")
-            elif clickbotao.get() == "Rolagem":
+            elif clickbotao == "Rolagem":
                 py.click(x, y, button="middle")
             else:
                 py.click(x, y)
@@ -35,16 +35,16 @@ def comecarautomacao(entradax, entraday, entradamin, entradaseg, entradamilis, c
     if rodandoe == False:
         return
     else:
-        threading.Thread(target=comecaclique, args=(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao), daemon=True).start()
+        threading.Thread(target=comecaclique, args=(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao)).start()
 
 def pararf():
     global rodando
     rodando = False
 
-def alternar():
+def alternar(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao):
     global rodando
 
-    if rodando == False:
+    if rodando == True:
         pararf()
     else:
-        comecarautomacao()
+        comecarautomacao(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao, rodandoe=True)

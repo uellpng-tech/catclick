@@ -33,9 +33,9 @@ def interfacetk():
     limitarn = (janela.register(limite), "%P")
 
     tk.Label(janela, text="Intervalo entre cliques").place(x=5, y=10)
-    labelmin = tk.Label(janela, text="Minutos:").place(x=5, y=40)
-    labelseg = tk.Label(janela, text="Segundos:").place(x=5, y=65)
-    labelmilis = tk.Label(janela, text="Milissegundos:").place(x=5, y=90)
+    tk.Label(janela, text="Minutos:").place(x=5, y=40)
+    tk.Label(janela, text="Segundos:").place(x=5, y=65)
+    tk.Label(janela, text="Milissegundos:").place(x=5, y=90)
 
     entradamin = tk.Entry(janela, width=5, validate="key", validatecommand=limitarn)
     entradamin.place(x=60, y=42)
@@ -52,7 +52,7 @@ def interfacetk():
     entradamilis.insert(0,"0")
     entradamilis.bind("<FocusOut>", zero)
 
-    click = tk.Label(janela, text="Tipo de clique").place(x=150 , y=10)
+    tk.Label(janela, text="Tipo de clique").place(x=150 , y=10)
 
     clicktipo = tk.StringVar()
     clicktipoopcao = ttk.Combobox(janela, textvariable=clicktipo, width=12)
@@ -110,19 +110,17 @@ def interfacetk():
 
         threading.Thread(target=lambda: Listener(on_click=clique).run(), daemon=True).start()
 
-    posicao = tk.Label(janela, text="posição").place(x=270, y=10)
+    tk.Label(janela, text="posição").place(x=270, y=10)
 
     posicaobotao = tk.Button(janela, text="Escolher local", height=1, command=escolhaposicao)
     posicaobotao.place(x=270, y=40)
 
-    captura = False
-
-    textox = tk.Label(janela, text="X").place(x=360, y=43)
+    tk.Label(janela, text="X").place(x=360, y=43)
 
     entradax = tk.Entry(janela, width=7, validate="key", validatecommand=limitarp)
     entradax.place(x=375, y=43)
 
-    textoy = tk.Label(janela, text="Y").place(x=430, y=43)
+    tk.Label(janela, text="Y").place(x=430, y=43)
 
     entraday = tk.Entry(janela, width=7, validate="key", validatecommand=limitarp)
     entraday.place(x=445, y=43)
@@ -146,9 +144,9 @@ def interfacetk():
             alternarb.config(state="disabled")
             return
         else:
-            comeca.config(state="normal")
-            parar.config(state="normal")
-            alternarb.config(state="normal")
+            comeca["state"] = "active"
+            parar["state"] = "active"
+            alternarb["state"] = "active"
 
     def redefinirf():
         entradamin.delete(0, tk.END)
@@ -172,14 +170,33 @@ def interfacetk():
 
         janela.focus_force()
 
-    keyboard.add_hotkey("F6", comecarautomacao)
+    def var_automacao():
+    
+        x = entradax.get()
+        y = entraday.get()
+        min = entradamin.get()
+        seg = entradaseg.get()
+        milis = entradamilis.get()
+        tipo = clicktipo.get()
+        botao = clickbotao.get()
+        comecarautomacao(x, y, min, seg, milis, tipo, botao, rodandoe=True)
+    
+    def var_alternar():
+    
+        x = entradax.get()
+        y = entraday.get()
+        min = entradamin.get()
+        seg = entradaseg.get()
+        milis = entradamilis.get()
+        tipo = clicktipo.get()
+        botao = clickbotao.get()
+        alternar(x, y, min, seg, milis, tipo, botao)
+
+    keyboard.add_hotkey("F6", var_automacao)
     keyboard.add_hotkey("F7", pararf)
-    keyboard.add_hotkey("F8", alternar)
+    keyboard.add_hotkey("F8", var_alternar)
 
     py.FAILSAFE = True
-
-    def var_automacao():
-        comecarautomacao(entradax, entraday, entradamin, entradaseg, entradamilis, clicktipo, clickbotao, rodando=True)
 
     comeca = tk.Button(janela, text="Começar (F6)", width=20, height=2, state="disabled", command=var_automacao)
     comeca.place(x=185, y=200)
@@ -187,7 +204,7 @@ def interfacetk():
     parar = tk.Button(janela, text="Parar (F7)", width=20, height=2, state="disabled", command=pararf)
     parar.place(x=340, y=200)
 
-    alternarb = tk.Button(janela, text="Alternar (F8)", width=20, height=2, state="disabled", command=alternar)
+    alternarb = tk.Button(janela, text="Alternar (F8)", width=20, height=2, state="disabled", command=var_alternar)
     alternarb.place(x=340, y=250)
 
     redefinir = tk.Button(janela, text="Redefinir", width=20, height=2, command=redefinirf)
