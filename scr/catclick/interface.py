@@ -3,7 +3,7 @@ import time as tm
 import pyautogui as py
 import threading
 import keyboard
-from tkinter import PhotoImage, Label,ttk
+from tkinter import PhotoImage, Label, ttk
 from pynput.mouse import Listener, Button
 from .automacao import comecarautomacao, pararf, alternar
 
@@ -12,6 +12,7 @@ def interfacetk():
     janela = tk.Tk()
     janela.title("CatClick")
     janela.geometry("500x400")
+    janela.iconbitmap(bitmap="assets/icon.ico")
     janela.resizable(width=False, height=False)
     fundo = PhotoImage(file="assets/fundo.png")
     labelfundo = Label(janela, image=fundo)
